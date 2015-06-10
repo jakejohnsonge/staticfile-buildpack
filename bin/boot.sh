@@ -15,7 +15,10 @@
 export APP_ROOT=$HOME
 export LD_LIBRARY_PATH=$APP_ROOT/openresty/lib:$LD_LIBRARY_PATH
 
+# Setting the env based on the vcap_services entry
+$(lua set_env.lua)
 conf_file=$APP_ROOT/openresty/nginx/conf/nginx.conf
+
 
 erb $conf_file > $APP_ROOT/openresty/nginx/conf/nginx-final.conf
 
